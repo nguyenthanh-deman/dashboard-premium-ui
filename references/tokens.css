@@ -1,0 +1,58 @@
+/* Dán vào CSS toàn cục, đặt class="admin-premium" lên phần tử gốc của vỏ dashboard.
+   Tên token theo Tailwind v4 (@theme): --color-surface, --color-ink, --color-line… — đổi cho khớp dự án.
+   --brand là màu thương hiệu sẵn có của dự án (nếu không có, thay bằng một màu bất kỳ). */
+
+/* ─────────────────────────────────────────────────────────────
+   ADMIN PREMIUM — vỏ quản trị luôn tối, trung tính gần đen (không
+   ánh tím/xanh). Ghi đè token trong phạm vi .admin-premium → mọi
+   trang /admin/* tự đổi theo, không sửa markup từng trang.
+   ───────────────────────────────────────────────────────────── */
+.admin-premium {
+  color-scheme: dark;
+  --color-paper: #0b0b0c;
+  --color-surface: #141415;
+  --color-mist: #1b1b1d;
+  --color-ink: #ededee;
+  --color-ink-2: #b4b4b8;
+  --color-muted: #77777d;
+  --color-line: rgb(255 255 255 / 0.07);
+  --color-line-2: rgb(255 255 255 / 0.04);
+  --brand-d: color-mix(in srgb, var(--brand) 55%, #fff);
+  --brand-tint: rgb(255 255 255 / 0.06);
+  --brand-light: color-mix(in srgb, var(--brand) 55%, #0b0b0c);
+  --brand-shadow: rgb(0 0 0 / 0.5);
+  --brand-glow: rgb(255 255 255 / 0.04);
+  /* Bảng màu series cho biểu đồ/chấm — sáng vừa, đọc rõ trên nền tối */
+  --viz-1: #f5c542;
+  --viz-2: #3ddc97;
+  --viz-3: #5b9cf6;
+  --viz-4: #f06bb0;
+  --viz-5: #a78bfa;
+  --viz-up: #3ddc97;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+/* Thẻ "nổi": viền trên sáng hơn + bóng sâu, giống tấm kính tối */
+.admin-premium .admin-card {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.035), rgb(255 255 255 / 0.01)), var(--color-surface);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -12px rgb(0 0 0 / 0.6);
+}
+.admin-premium .admin-nav-active {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.05));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 0 0 1px rgb(255 255 255 / 0.06), 0 2px 6px rgb(0 0 0 / 0.4);
+}
+.admin-premium .admin-kbd {
+  display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 4px;
+  border-radius: 5px; border: 1px solid rgb(255 255 255 / 0.1); background: rgb(255 255 255 / 0.04);
+  font-family: var(--font-mono); font-size: 10px; color: var(--color-muted);
+}
+/* Thẻ ngân hàng 3D trang trí ở KPI doanh thu */
+.admin-cc {
+  position: absolute; width: 112px; height: 70px; border-radius: 10px;
+  background: linear-gradient(135deg, #3a3a3e 0%, #1c1c1f 45%, #0e0e10 100%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 14px 24px -6px rgb(0 0 0 / 0.8);
+}
+.admin-cc::before { /* chip */
+  content: ""; position: absolute; left: 12px; top: 22px; width: 16px; height: 12px; border-radius: 3px;
+  background: linear-gradient(135deg, #d9d9dc, #8d8d92);
+}
